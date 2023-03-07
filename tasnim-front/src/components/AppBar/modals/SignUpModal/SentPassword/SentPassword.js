@@ -1,9 +1,6 @@
 import { TextField, Typography } from "@material-ui/core"
 import React, { useState } from "react"
-import APP_URL from "../../../../../Data/APP_URL"
 import dataProvider from "../../../../../Data/dataProvider"
-import handleFetchError from "../../../../../Data/ErrorHandler"
-import Timer from './Timer/Timer'
 import { useSelector, useDispatch } from "react-redux"
 import { setError } from "../../../../../redux/error_slice"
 
@@ -43,15 +40,6 @@ const SentPassword = props => {
                     className="signUpSentPassInput"
                     placeholder="کد دسترسی"
                     id="verificationCodeInput" />
-                <div>
-                    {seconds == 0 ?
-                        <Typography className="smallText" style={{ cursor: 'pointer' }} onClick={e => {
-                            setSeconds(59)
-                        }}>ارسال مجدد</Typography>
-                        :
-                        <Timer seconds={seconds} setSeconds={setSeconds} />
-                    }
-                </div>
                 <Typography className="signUpConfirmButton" onClick={sendVerificationCode}>تایید</Typography>
 
             </div>

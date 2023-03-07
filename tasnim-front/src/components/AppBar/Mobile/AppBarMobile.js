@@ -18,7 +18,7 @@ import { Divider } from '@material-ui/core';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import Badge from '@material-ui/core/Badge';
 import ProfileMenu from '../ProfileMenu/ProfileMenu';
-import cafetasnimImage from "./cafetasnim.png"
+import tarashtImage from "./tarasht.png"
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
@@ -86,7 +86,7 @@ const AppBarMobile = props => {
                 }}>
                     <ShoppingBasketIcon />
                 </Badge>
-            </IconButton >
+            </IconButton>
         </div>
     return (
         <div className="appBarMobileContainer">
@@ -106,14 +106,14 @@ const AppBarMobile = props => {
                                 <KeyboardArrowRightIcon color="secondary" fontSize="large" />
                             </IconButton>
                         </div>
-                        <img src={cafetasnimImage} className="drawerImage" onClick={e => history.push("/")} />
+                        <img src={tarashtImage} className="drawerImage" onClick={e => history.push("/")} />
                         <List>
                             {listItem}
                         </List>
                     </div>
                 </Drawer>
             </Fragment>
-        </div >
+        </div>
     )
 }
 

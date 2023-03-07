@@ -46,11 +46,11 @@ const AppBarDesktop = props => {
                 <Badge badgeContent={basketLength} color="secondary">
                     <ShoppingBasketIcon />
                 </Badge>
-            </IconButton >
+            </IconButton>
         </div>
     return (
         <div className="appBarDesktopContainer">
-            <img src={logo} onClick={e => history.push("/")} className="appBarLogo" width="50px" height="60px" />
+            <img src={logo} onClick={e => history.push("/")} className="appBarLogo" width="120px" height="60px" />
             {buttonTitles}
             {!user.login ? appBarLogin : appBarProfile}
         </div>

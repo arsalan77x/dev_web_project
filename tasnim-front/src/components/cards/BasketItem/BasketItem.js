@@ -29,7 +29,7 @@ const BasketItem = props => {
                     </div>
                 </div>
                 : <DesktopHomeBasketItem item={props.item} discount={props.item.discount} />}
-        </div >
+        </div>
 
     )
 }

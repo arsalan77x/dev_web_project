@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Box, makeStyles } from "@material-ui/core";
 import SignUpModal from "./SignUpModal/SignUpModal";
 import LoginModal from "./LoginModal/LoginModal";
-import ForgotModal from "./ForgetPassword/forgot_modal";
+
 
 const AuthModal = (props) => {
     const classes = useStyles()
@@ -11,7 +11,7 @@ const AuthModal = (props) => {
     return (
         <Box className={classes.root}>
             {
-                page < 0 ? <ForgotModal page={page} setPage={setPage} setOpen={props.setOpen} /> :
+
                     page === 0 ? <LoginModal page={page} setPage={setPage} setOpen={props.setOpen}/> :
                         page > 0 ? <SignUpModal page={page} setPage={setPage} setOpen={props.setOpen} /> : null
             }

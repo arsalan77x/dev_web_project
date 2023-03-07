@@ -73,8 +73,6 @@ module.exports = {
                         console.log(newcustomer)
                         const customer = await CustomerRepo.update_one(newcustomer._id, newcustomer);
                         new SuccessResponse('AllSuccess').send(res, customer);
-
-
                     }
 
                 })

@@ -56,9 +56,9 @@ const LoginModal = (props) => {
                         ),
                     }}
                 />
-                <Typography color="textSecondary" gutterBottom paragraph style={{cursor:'pointer'}} onClick={e => props.setPage(props.page - 1)}>فراموشی رمز عبور</Typography>
+                {/* <Typography color="textSecondary" gutterBottom paragraph style={{cursor:'pointer'}} onClick={e => props.setPage(props.page - 1)}>فراموشی رمز عبور</Typography> */}
                 <SubmitButton text="تایید" onClick={callLogin} />
-                <p className="loginGotoSignup">برای عضویت<Typography className="linkText" onClick={goToSignUpModal}> کلیک </Typography> کنید</p>
+                <p className="loginGotoSignup">برای عضویت <Typography className="linkText" onClick={goToSignUpModal}> کلیک </Typography> کنید</p>
             </Box>
         </Box>
     )

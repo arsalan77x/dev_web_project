@@ -5,7 +5,7 @@ import ProductCounter from "../../../../ProductCounter/ProductCounter";
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 import BaseModal from "../../../../modal/base_modal";
-import ProductTastesModal from "../../modals/ProductTastesModal/ProductTastesModal";
+
 
 const MobileProductCardItem = props => {
     const [tasteModal, setTasteModal] = useState(false)
@@ -23,7 +23,7 @@ const MobileProductCardItem = props => {
 
             {props.product.tastes && props.product.tastes.length !== 0 ?
                 <>
-                    <BaseModal open={tasteModal} setOpen={setTasteModal}>
+                    {/* <BaseModal open={tasteModal} setOpen={setTasteModal}>
                         <ProductTastesModal open={tasteModal} setOpen={setTasteModal} product={props.product} />
                     </BaseModal>
                     <IconButton
@@ -32,7 +32,7 @@ const MobileProductCardItem = props => {
                         }}
                     >
                         <AddIcon color="secondary" />
-                    </IconButton>
+                    </IconButton> */}
                 </>
                 :
                 <ProductCounter

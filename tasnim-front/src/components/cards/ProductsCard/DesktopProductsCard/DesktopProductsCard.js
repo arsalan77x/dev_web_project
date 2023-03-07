@@ -13,7 +13,7 @@ import StyleIcon from '@material-ui/icons/Style';
 import { calculateDiscount } from "../../../../Data/Utils";
 import BaseModal from "../../../modal/base_modal";
 import { useHistory } from "react-router-dom";
-import ProductTastesModal from "../modals/ProductTastesModal/ProductTastesModal";
+
 import ProductTypeModal from "../modals/ProductTypeModal/ProductTypeModal";
 
 const useStyles = makeStyles({
@@ -88,18 +88,7 @@ const DesktopProductsCard = props => {
                             }
                         </div>
                         {props.product.tastes && props.product.tastes.length !== 0 ?
-                            <>
-                                <BaseModal open={tasteModal} setOpen={setTasteModal}>
-                                    <ProductTastesModal setOpen={setTasteModal} product={props.product} />
-                                </BaseModal>
-                                <IconButton
-                                    onClick={(e) => {
-                                        setTasteModal(true)
-                                    }}
-                                >
-                                    <AddIcon color="secondary" />
-                                </IconButton>
-                            </>
+                            null
                             :
                             props.product.types.length === 1 ?
                                 <ProductCounter

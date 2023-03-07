@@ -1,7 +1,8 @@
 import { TextField, Typography } from "@material-ui/core"
 import React, { useState } from "react"
 import dataProvider from "../../../../../Data/dataProvider"
-import { useDispatch } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+
 import { setUser } from "../../../../../redux/user_slice"
 import { setError } from "../../../../../redux/error_slice"
 
@@ -17,8 +18,10 @@ const PhoneNumber = props => {
             dispatch(setError({ loading: true }))
             let data = await dataProvider.getOne("customer/signup/ver/" + phoneNumber)
             if (data === "success") {
-                props.setPage(props.page + 1)
+                props.setPage(props.page + 2)
                 dispatch(setUser({ phone: phoneNumber }))
+                
+                let dataa = await dataProvider.getOne("customer/signup/ver/" + phoneNumber + "/" + 1)
             }
             dispatch(setError({ loading: false }))
         }
