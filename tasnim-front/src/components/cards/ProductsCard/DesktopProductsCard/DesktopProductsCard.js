@@ -30,7 +30,6 @@ const useStyles = makeStyles({
 
 const DesktopProductsCard = props => {
     const classes = useStyles()
-    const [tasteModal, setTasteModal] = useState(false)
     const [typeModal, setTypeModal] = useState(false)
     const history = useHistory()
 

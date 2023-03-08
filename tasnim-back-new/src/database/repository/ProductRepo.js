@@ -75,7 +75,7 @@ module.exports = class ProductRepo {
             daily_off: data.daily_off,
             price_after_off: data.price_after_off,
             types: data.types,
-            tastes: data.tastes,
+  
             category: data.category
         })
         const newProduct = await product.save()

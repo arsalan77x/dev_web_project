@@ -23,16 +23,7 @@ const typeCountSchema = new mongoose.Schema({
 
 });
 
-const tasteSchema = new mongoose.Schema({
-  name: {
-    type: String,
-  },
-  count: {
-    type: Number,
-    default: 0,
-  }
 
-});
 
 
 const addressSchema = new mongoose.Schema({
@@ -68,10 +59,7 @@ const pTypeSchema = new mongoose.Schema({
     type: [typeCountSchema],
     required: false
   },
-  tastes: {
-    type: [tasteSchema],
-    required: false
-  },
+
 
 });
 

@@ -21,8 +21,7 @@ const basketSlice = createSlice({
     reducers: {
         increment(state, action) {
             const typeItem = action.payload.item,
-                product = action.payload.product,
-                tasteProduct = action.payload.tasteProduct
+                product = action.payload.product
             if (!state) {
                 localStorage.setItem("state", JSON.stringify([]))
                 state = []
@@ -47,8 +46,7 @@ const basketSlice = createSlice({
                     imageUrl: product.pic_url,
                     pack: product.packprice,
                 }
-                if (tasteProduct)
-                    newBasketItem.productTastes = tasteProduct.tastes
+                
                 state.push(newBasketItem)
             }
             saveStateToLocalStorage(state)

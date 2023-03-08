@@ -22,16 +22,7 @@ const typeSchema = new mongoose.Schema({
   }
 
 });
-const tasteSchema = new mongoose.Schema({
-  name: {
-    type: String,
-  },
-  count: {
-    type: Number,
-    default: 0,
-  }
 
-});
 
 const Schema = new mongoose.Schema({
 
@@ -65,14 +56,8 @@ const Schema = new mongoose.Schema({
     type: [typeSchema],
     required: false,
   },
-  taste_count: {
-    type: Number,
-    required: false,
-  },
-  tastes: {
-    type: [tasteSchema],
-    required: false,
-  },
+
+
   price: {
     type: Number,
     required: false

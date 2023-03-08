@@ -21,9 +21,7 @@ export const finalShopping = async (deliveryType, payType, history) => {
       product: productid,
       types: item,
     };
-    if (item[0].productTastes) {
-      detail.tastes = item[0].productTastes;
-    }
+    
     products.push(detail);
   });
 
