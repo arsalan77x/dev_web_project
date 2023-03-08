@@ -80,10 +80,10 @@ const Factor = props => {
                                 <Table>
                                     <TableHead>
                                         <TableRow>
-                                            <StyledTableCell align="center">نام سفارش</StyledTableCell >
-                                            <StyledTableCell align="center">اندازه</StyledTableCell >
-                                            <StyledTableCell align="center">تعداد</StyledTableCell >
-                                            <StyledTableCell align="center">قیمت</StyledTableCell >
+                                            <StyledTableCell align="center">نام سفارش</StyledTableCell>
+                                            <StyledTableCell align="center">اندازه</StyledTableCell>
+                                            <StyledTableCell align="center">تعداد</StyledTableCell>
+                                            <StyledTableCell align="center">قیمت</StyledTableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -93,13 +93,6 @@ const Factor = props => {
                                                     <StyledTableCell align="center">{detailItem.product.name}</StyledTableCell>
                                                     <StyledTableCell align="center">
                                                         {row.size}
-                                                        {/* {detailItem.tastes && detailItem.tastes.length !== 0 ?
-                                                            <Tooltip title={detailItem.tastes.map(elm =>
-                                                                <Typography>{elm.name}</Typography>
-                                                            )}>
-                                                                <Button>طعم ها</Button>
-                                                            </Tooltip>
-                                                            : null} */}
                                                     </StyledTableCell>
                                                     <StyledTableCell align="center">{row.count}</StyledTableCell>
                                                     <StyledTableCell align="center">{row.price}</StyledTableCell>
@@ -147,11 +140,6 @@ const Factor = props => {
                                 <div className="factorDetailsField">
                                     <p className="factorDetailsFieldText">هزینه ارسال</p>
                                     <p className="factorDetailsFieldText">{factorDetail.send_price}</p>
-                                </div>
-                                <Divider />
-                                <div className="factorDetailsField">
-                                    <p className="factorDetailsFieldText">تخفیف</p>
-                                    <p className="factorDetailsFieldText">{factorDetail.price - factorDetail.price_after_off}</p>
                                 </div>
                             </div>
 

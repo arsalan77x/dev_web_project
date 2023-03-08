@@ -5,12 +5,11 @@ const { ErrorHandler, BadRequestError, AuthFailureError } = require('../../../co
 const _ = require('lodash');
 const paramHelper = require('../../../helper/queryParam.helper');
 const mongoose = require('mongoose');
-const smsApi = require('../../../core/smsApi');
+const validatePhone = require('../../../core/validatePhone');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const keystoreRepo = require('../../../database/repository/KeystoreRepo');
 const { createTokens } = require('../../../auth/authUtils');
-const smsApiForget = require('../../../core/smsApiForget');
 
 module.exports = {
     customer_site:
@@ -19,7 +18,7 @@ module.exports = {
         signup_phone: async function (req, res) {
             try {
 
-                smsApi(req, res)
+                validatePhone(req, res)
 
             } catch (error) {
                 ErrorHandler.handle(error, res)
@@ -110,61 +109,6 @@ module.exports = {
             }
         },
 
-        forget_phone: async function (req, res) {
-            try {
-                smsApiForget(req, res)
-            } catch (error) {
-                ErrorHandler.handle(error, res)
-            }
-        },
-        forget_phone_code: async function (req, res) {
-            try {
-                const phone = req.params.phone;
-                const code = req.params.code;
-                var verif_code;
-
-                Customer.findOne({ phone: phone }).lean().exec(function (err, doc) {
-                    if (doc && doc.verif_code == code) {
-                        Customer.updateOne({ phone: phone }, { $set: { verified: true } },
-                            { returnOriginal: false }, function (err, customer) {
-                                if (err) {
-                                    new BadRequestResponse().send(res)
-                                }
-                                new SuccessResponse("کد تایید شد").send(res, {})
-                            })
-                    } else {
-                        new BadRequestResponse("کد اشتباه است").send(res)
-                    }
-                });
-
-            } catch (err) {
-                new InternalErrorResponse(err.message).send(res, {})
-            }
-        },
-        forget: async function (req, res) {
-            try {
-                let customer = await CustomerRepo.get_list({
-                    filter: {
-                        "username": req.body.username,
-                        "verif_code": req.body.verif_code
-                    }
-                });
-                if (customer.length == 0) throw new BadRequestError('UserNotRegistered');
-                if (!customer[0].password) throw new BadRequestError('CredentialNotSet');
-                customer = customer[0]
-
-                let newcustomer = {}
-                newcustomer.password = req.body.password
-                newcustomer.verif_code = undefined
-                const customernew = await CustomerRepo.update_one(customer._id, newcustomer);
-
-                new SuccessResponse('با موفقیت انجام شد').send(res, customernew);
-
-
-            } catch (error) {
-                ErrorHandler.handle(error, res)
-            }
-        },
         signout: async function (req, res) {
             try {
                 await keystoreRepo.remove(req.keystore._id);

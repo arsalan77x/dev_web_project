@@ -87,7 +87,7 @@ const FinishShopping = props => {
                 </div>
                 <div className="productsPriceContainer">
                     <p className="priceTitle">هزینه ارسال</p>
-                    <p className="priceText">{deliveryType == "shop" ? "رایگان" : (prices.send ?? "خارج از محدوده")} </p>
+                    <p className="priceText">{deliveryType == "shop" ? "رایگان" : (prices.send ?? "رایگان")} </p>
                 </div>
                 <div className="discountContainer">
                     <p className="payDiscountTitle">تخفیف:</p>
@@ -105,7 +105,7 @@ const FinishShopping = props => {
                         <Typography variant="h6" color="textSecondary">نوع تحویل:</Typography>
                         <RadioGroup className={classes.radioGroup} value={deliveryType} onChange={handleChangeDelivery}>
                             <FormControlLabel className={classes.formControlLabel} value="home" control={<Radio />} label="تحویل درب منزل" />
-                            <FormControlLabel className={classes.formControlLabel} value="shop" control={<Radio />} label="تحویل در کافه" />
+                            <FormControlLabel className={classes.formControlLabel} value="shop" control={<Radio />} label="تحویل در محل" />
                         </RadioGroup>
                     </Box>
                     <Divider orientation="vertical" flexItem />

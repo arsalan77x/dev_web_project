@@ -3,14 +3,14 @@ import "./DesktopProductsCard.scss"
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import APP_URL from "../../../../Data/APP_URL"
+
 import { Divider, Grow, makeStyles } from "@material-ui/core";
 import ImageContainer from "../../ImageContainer/ImageContainer";
 import ProductCounter from "../../../ProductCounter/ProductCounter";
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 import StyleIcon from '@material-ui/icons/Style';
-import { calculateDiscount } from "../../../../Data/Utils";
+
 import BaseModal from "../../../modal/base_modal";
 import { useHistory } from "react-router-dom";
 
@@ -74,20 +74,8 @@ const DesktopProductsCard = props => {
                                 </Typography>
                                 : null
                             }
-
-                            {(props.product.off_percent && props.product.off_percent !== 0) ?
-                                <div>
-                                    <del className="desktopProductDeletedPrice">
-                                        {props.product.types[0].price}تومان
-                                    </del>
-                                    <Typography variant="h5" color="textSecondary">
-                                        {calculateDiscount(props.product.types[0].price, props.product.off_percent)}تومان
-                                    </Typography>
-                                </div>
-                                : null
-                            }
                         </div>
-                        {props.product.tastes && props.product.tastes.length !== 0 ?
+                        {false ?
                             null
                             :
                             props.product.types.length === 1 ?

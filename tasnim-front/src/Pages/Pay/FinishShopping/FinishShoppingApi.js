@@ -26,13 +26,14 @@ export const finalShopping = async (deliveryType, payType, history) => {
     }
     products.push(detail);
   });
+
   const order = {
     product_id: productsIds,
     customer_id: customerId,
     address: store.getState().user?.order?.address ?? {},
     state: "",
     caption: sessionStorage.getItem("orderCaption"),
-    deliver_type: deliveryType === "shop" ? "کافه" : "ارسال",
+    deliver_type: deliveryType === "shop" ? "در محل" : "ارسال",
     pay_type: payType,
     detail: products,
   };

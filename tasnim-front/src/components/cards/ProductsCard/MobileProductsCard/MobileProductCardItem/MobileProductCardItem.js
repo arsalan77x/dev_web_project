@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { calculateDiscount } from "../../../../../Data/Utils"
+
 import "./MobileProductCardItem.scss"
 import ProductCounter from "../../../../ProductCounter/ProductCounter";
 import IconButton from '@material-ui/core/IconButton';
@@ -18,7 +18,7 @@ const MobileProductCardItem = props => {
                 {(props.product.off_percent ?
                     <del className="mobileDeletedPrice"> {item.price.toLocaleString()}</del>
                     : null)}
-                <p className="mobilePrice"> {calculateDiscount(item.price, props.product.off_percent).toLocaleString()}</p>
+                <p className="mobilePrice"> {item.price.toLocaleString()}</p>
             </div>
 
             {props.product.tastes && props.product.tastes.length !== 0 ?

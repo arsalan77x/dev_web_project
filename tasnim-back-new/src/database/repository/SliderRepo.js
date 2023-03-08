@@ -55,7 +55,7 @@ module.exports = class SliderRepo {
         ids.map(id => {
             this.delete_one(id)
         })
-
+ 
         return this.get_list()
 
     }

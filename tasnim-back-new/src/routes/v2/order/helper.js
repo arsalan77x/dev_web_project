@@ -6,68 +6,11 @@ const Product = require('../../../database/model/bussiness/product.model')
 const {InternalErrorResponse} = require('../../../core/ApiResponse')
 const {CONFIG_ID} = require('../../../../config')
 
-function calcDistance(lat, lon, location) {
-    let shopLat = location.shop_location.lat
-    let shopLon = location.shop_location.lon
 
-    shopLon = (shopLon * Math.PI) / 180
-    lon = (lon * Math.PI) / 180
-    shopLat = (shopLat * Math.PI) / 180
-    lat = (lat * Math.PI) / 180
 
-    // Haversine formula
-    let dlon = lon - shopLon
-    let dlat = lat - shopLat
-    let a =
-        Math.pow(Math.sin(dlat / 2), 2) +
-        Math.cos(shopLat) * Math.cos(lat) * Math.pow(Math.sin(dlon / 2), 2)
-
-    let c = 2 * Math.asin(Math.sqrt(a))
-
-    // Radius of earth in kilometers. Use 3956
-    // for miles
-    let r = 6371
-
-    // calculate the result
-    // console.log(lat + " " + lon)
-    return c * r
-}
-
-function isLocationValid(lat, lon, location) {
-    var top = location.top
-    var bottom = location.bottom
-    var right = location.right
-    var left = location.left
-    if (
-        lat.localeCompare(top.lat) <= 0 &&
-        lat.localeCompare(bottom.lat) >= 0 &&
-        lon.localeCompare(left.lon) >= 0 &&
-        lon.localeCompare(right.lon) <= 0
-    )
-        return true
-    return false
-}
-
-async function calcPrice(lat, lon) {
-    let price = 0
-    let location = await Config.findOne({_id: '617822c0d4978297215a0043'})
-    location = location.location
-    if (isLocationValid(lat, lon, location)) {
-        let distance = calcDistance(lat, lon, location)
-        if (String.toString(distance).localeCompare(location.free_distance_unit) <= 0) {
-            return price
-        }
-        price = ((distance - location.free_distance_unit) * location.price_per_unit) / location.unit
-        return price
-    } else {
-        throw new BadRequestError('خارح از محدوده')
-    }
-}
 
 async function sendPriceCalc(lat, lon) {
-    let price = await calcPrice(lat, lon)
-    price = Math.ceil(price / 1000) * 1000
-    return price
+    return 0
 }
 
 async function basketPriceCalc(req) {

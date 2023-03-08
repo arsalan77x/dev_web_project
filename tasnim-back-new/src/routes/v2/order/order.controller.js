@@ -19,9 +19,7 @@ module.exports = {
                 let order = await OrderRepo.get_list(params)
                 if (params.lang) {
                     order = await makePersian(order, ['time'])
-
                 }
-
                 new SuccessResponse('AllSuccess').send(res, order)
             } catch (error) {
                 ErrorHandler.handle(error, res)
@@ -53,21 +51,10 @@ module.exports = {
                 let finalPriceToPay = +req.priceAfter + +req.packprice + +sendPrice
                 const customer = await Customer.findById(req.body.customer_id)
                 let zarrinResponse = ''
-                let state = ''
-                let isOfflinePay = false
-                if (req.body.pay_type === 'online') {
-                    zarrinResponse = await paymentRequest(
-                        req.body.caption || 'new shop!',
-                        'rezayazdian97@gmail.com',
-                        customer.phone,
-                        finalPriceToPay,
-                    )
-                    state = 'پرداخت ناموفق'
-                } else if (req.body.pay_type === 'offline') {
-                    state = 'پرداخت حضوری'
-                    isOfflinePay = true
-                }
-                const factorNum = await getFactorNumberOfToday()
+                let state = 'پرداخت حضوری'
+                let isOfflinePay = true
+           
+
                 const factorId = await makeid(5)
                 const order = new Order({
                     customer_id: req.body.customer_id,
@@ -88,17 +75,13 @@ module.exports = {
                     pay_type: req.body.pay_type,
                     price_after_off: req.priceAfter,
                     pay_authority: zarrinResponse.authority,
-                    factor_number: factorNum,
-                    factor_id: factorNum + factorId,
+                    factor_number: factorId,
+                    factor_id: factorId,
                 })
                 const ordernew = await OrderRepo.create_one(order)
                 // new SuccessResponse('AllSuccess').send(res, ordernew)
+                new SuccessResponse().send(res, { message: 'offline' })
 
-                if (zarrinResponse.status === 100) {
-                    new SuccessResponse().send(res, { url: zarrinResponse.url })
-                } else if (isOfflinePay) {
-                    new SuccessResponse().send(res, { message: 'offline' })
-                } else new BadRequestResponse().send(res, { pay: zarrinResponse })
             } catch (error) {
                 ErrorHandler.handle(error, res)
             }
@@ -165,7 +148,7 @@ module.exports = {
                 customer = await CustomerRepo.get_one(req.params.cid)
                 var address = await customer.address.filter(item => item._id == req.params.aid)[0]
                 console.log(address)
-                var sendPrice = await sendPriceCalc(address.latitude, address.longitude)
+                var sendPrice = 0
                 var response = { send_price: sendPrice }
                 new SuccessResponse('AllSuccess').send(res, response)
             } catch (error) {

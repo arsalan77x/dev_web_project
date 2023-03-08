@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import "./Product.scss"
 import Footer from "../../components/Footer/Footer"
 import { getProduct } from "./ProductApi"
-import { calculateDiscount } from "../../Data/Utils"
+
 import APP_URL from "../../Data/APP_URL"
 import ProductCounter from "../../components/ProductCounter/ProductCounter"
 import Rating from '@material-ui/lab/Rating';
@@ -24,7 +24,7 @@ const ProductPageType = props => {
                 {(props.discount ?
                     <del className="productPageDeletedPrice"> {props.item.price.toLocaleString()}</del>
                     : null)}
-                <p className="productPagePrice"> {calculateDiscount(props.item.price, props.discount).toLocaleString()}</p>
+                <p className="productPagePrice"> props.item.price.toLocaleString()</p>
             </div>
 
             <ProductCounter
@@ -61,12 +61,7 @@ const Product = props => {
 
                     <div className="productPageImageContainer">
                         {product.pic_url && <img src={APP_URL + product.pic_url} width="100%" />}
-                        {(product.off_percent ?
-
-                            <div className="productPageDiscountCountainer">
-                                <p className="productPageDiscountTitle">{product.off_percent}% <br />تخفیف</p>
-                            </div>
-                            : null)}
+                        
 
                     </div>
 

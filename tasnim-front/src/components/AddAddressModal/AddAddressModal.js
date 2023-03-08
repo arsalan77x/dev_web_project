@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
 const AddAddressModal = props => {
     const classes = useStyles()
     const [field, setField] = useState(false)
-    const [position, setPosition] = useState(tarasht_POSITION)
+    const [position, setPosition] = useState({lat: 0.0, lng: 0.0})
 
     return (
         <Box className={classes.root}>

@@ -76,7 +76,7 @@ const MobileAddress = props => {
             <Box className={classes.bottomDetail}>
                 <Box display={'flex'} justifyContent={'space-between'} margin={"5px 0px"} alignItems={'center'}>
                     <Typography color="textSecondary">هزینه ارسال</Typography>
-                    <Typography variant="h6">{deliveryType == "shop" ? "رایگان" : (prices.send ?? "خارج از محدوده")} </Typography>
+                    <Typography variant="h6">{deliveryType == "shop" ? "رایگان" : "رایگان" } </Typography>
                 </Box>
                 <Divider />
 
@@ -85,7 +85,7 @@ const MobileAddress = props => {
                         <Typography variant="h6" color="textSecondary">نوع تحویل:</Typography>
                         <RadioGroup className={classes.radioGroup} value={deliveryType} onChange={handleChangeDelivery}>
                             <FormControlLabel className={classes.formControlLabel} value="home" control={<Radio />} label="تحویل درب منزل" />
-                            <FormControlLabel className={classes.formControlLabel} value="shop" control={<Radio />} label="تحویل در کافه" />
+                            <FormControlLabel className={classes.formControlLabel} value="shop" control={<Radio />} label="تحویل در محل" />
                         </RadioGroup>
                     </Box>
                     <Divider orientation="vertical" flexItem />

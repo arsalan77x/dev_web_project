@@ -1,6 +1,6 @@
 import React from "react"
 import "./DesktopProductCardItem.scss"
-import { calculateDiscount} from "../../../../../Data/Utils"
+
 import ProductCounter from "../../../../ProductCounter/ProductCounter";
 
 const DesktopProductCardItem = props => {
@@ -13,7 +13,7 @@ const DesktopProductCardItem = props => {
                 {(props.discount ?
                     <del className="deletedPrice"> {item.price.toLocaleString()} تومان</del>
                     : null)}
-                <p className="price"> {calculateDiscount(item.price, props.discount).toLocaleString()} تومان</p>
+                <p className="price">  تومان</p>
             </div>
 
             <ProductCounter

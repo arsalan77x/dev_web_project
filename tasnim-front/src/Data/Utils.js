@@ -6,10 +6,7 @@ import { emptyUser, setUser } from "../redux/user_slice";
 import { emptyBasket } from "../redux/basket_slice";
 import { emptyPrices, setPrices } from "../redux/prices_slice";
 
-export const calculateDiscount = (price, discount) => {
-  if (!discount) discount = 0;
-  return (price * (100 - discount)) / 100;
-};
+
 
 export const calculateBasketPrices = async (send, shop_deliver) => {
   const basket = store.getState().basket;
@@ -80,12 +77,8 @@ export const buy = (
         store.dispatch(
           setError({ open: true, message: label, state: "warning" })
         );
-      } else if (store.getState().prices.send < 0 && deliveryType !== "shop") {
-        label = "آدرس شما خارج از محدوده است";
-        store.dispatch(
-          setError({ open: true, message: label, state: "warning" })
-        );
       } else {
+
         finalShopping(deliveryType, payType, history);
       }
     else {

@@ -21,9 +21,7 @@ router.get('/signup/ver/:phone/:code', customer_site.signup_phone_code)
 router.post('/signup', customer_site.signup)
 router.post('/signout', authentication, customer_site.signout)
 
-router.get('/forget/ver/:phone', customer_site.forget_phone)
-router.get('/forget/ver/:phone/:code', customer_site.forget_phone_code)
-router.post('/forget', customer_site.forget)
+
 
 router.post('/signin', customer_site.signin)
 router.get('/verify', authentication, customer_site.verify)
