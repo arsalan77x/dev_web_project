@@ -67,7 +67,11 @@ const DesktopProductsCard = props => {
                         : null)}
                     <div className="desktopProductCardTypeContainer">
                         <div className="desktopProductPlusContainer">
+                        {
+                            console.log(props.product)
+                        }
                             {!(props.product.off_percent && props.product.off_percent !== 0) ?
+                                
                                 <Typography variant="h5" color="textSecondary">
                                     {props.product.types[0].price}تومان
                                 </Typography>

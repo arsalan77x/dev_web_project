@@ -8,7 +8,7 @@ const Schema = new mongoose.Schema({
 
   title: {
     type: String,
-    required: true
+    required: false
   },
   caption: {
     type: String,
@@ -20,16 +20,16 @@ const Schema = new mongoose.Schema({
   },
   pic_url: {
     type: String,
-    required: true
+    required: false
   },
   createdAt: {
     type: Date,
-    required: true,
+    required: false,
     select: false,
   },
   updatedAt: {
     type: Date,
-    required: true,
+    required: false,
     select: false,
   },
 },

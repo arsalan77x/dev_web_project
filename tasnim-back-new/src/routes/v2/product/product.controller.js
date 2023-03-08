@@ -19,9 +19,10 @@ module.exports = {
         },
         get_menu: async function (req, res) {
             try {
+            
                 const params = paramHelper(req)
                 const product = await ProductRepo.get_menu(params)
-
+      
                 new SuccessResponse('AllSuccess').send(res, product)
             } catch (error) {
                 ErrorHandler.handle(error, res)

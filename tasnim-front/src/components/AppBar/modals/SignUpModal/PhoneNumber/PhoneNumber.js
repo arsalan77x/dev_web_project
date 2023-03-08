@@ -14,7 +14,10 @@ const PhoneNumber = props => {
 
         if (phoneNumber === "") {
             setInputError({ phone: true, text: "لطفا شماره موبایل خود را وارد کنید" })
-        } else {
+        } else if (phoneNumber.length != 11) {
+            setInputError({ phone: true, text: "شماره موبایل باید معتبر باشد." })
+        } 
+        else {
             dispatch(setError({ loading: true }))
             let data = await dataProvider.getOne("customer/signup/ver/" + phoneNumber)
             if (data === "success") {
