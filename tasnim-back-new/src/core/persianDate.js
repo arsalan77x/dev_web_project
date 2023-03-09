@@ -50,5 +50,5 @@ module.exports = {
   addDateToObject,
   makePersian,
   toIranTimeZone
-  // anotherMethod
+
 };

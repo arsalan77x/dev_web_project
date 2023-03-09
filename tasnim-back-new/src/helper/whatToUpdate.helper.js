@@ -9,7 +9,6 @@ module.exports = function whatToUpdate(newData, omitList, prefixKey) {
         fieldToUpdate[`${prefixKey}${key}`] = newData[key]
     }
 
-    // set updatedAt field
     fieldToUpdate[`${prefixKey}updatedAt`] = Date.now()
 
     return fieldToUpdate

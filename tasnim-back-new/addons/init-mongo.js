@@ -24,12 +24,10 @@ function seed(dbName, user, password) {
   db.logs.createIndex({ "createdAt": 1 }, { expireAfterSeconds: 7890000 })
 
   db.roles.insertMany([
-    { name: 'HUMAN', code: 0, status: true, description: 'fee', createdAt: new Date(), updatedAt: new Date() },
-    { name: 'USER', code: 1, status: true, description: 'car', createdAt: new Date(), updatedAt: new Date() },
-    { name: 'SUPERUSER', code: 2, status: true, description: 'customer', createdAt: new Date(), updatedAt: new Date() },
-    { name: 'ADMIN', code: 3, status: true, description: 'finance', createdAt: new Date(), updatedAt: new Date() },
-    { name: 'SUPERADMIN', code: 4, status: true, description: 'manager', createdAt: new Date(), updatedAt: new Date() },
-    { name: 'GOD', code: 5, status: true, description: 'god', createdAt: new Date(), updatedAt: new Date() },
+    { name: 'USER', code: 1, status: true, description: 'buy stuff', createdAt: new Date(), updatedAt: new Date() },
+    { name: 'ADMIN', code: 3, status: true, description: 'add stuff', createdAt: new Date(), updatedAt: new Date() },
+
+
   ]);
 
   db.users.insertMany([

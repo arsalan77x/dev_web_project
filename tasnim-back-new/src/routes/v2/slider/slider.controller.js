@@ -8,31 +8,7 @@ const mongoose = require('mongoose')
 module.exports = {
     slider:
     {
-        // create_admin: async function (req, res) {
-        //     try {
-        //         const gid = mongoose.Types.ObjectId(req.params.id)
-        //         const user = req.body
-        //         const result = await UserRepo.new_user
-        //             (
-        //                 user.username,
-        //                 user.phone_number,
-        //                 user.job_title,
-        //                 user.name,
-        //                 user.email,
-        //                 user.password,
-        //                 user.profilePicUrl,
-        //                 [0, 1, 2, 3, 4]
-        //             )
-        //         const updated = { admin: result.user._id }
-        //         const newEmployee = await EmployeeRepo.create_one(gid, result.user._id);
-
-        //         const user = await GarageRepo.update_one(gid, updated);
-
-        //         new SuccessResponse('AllSuccess').send(res, user);
-        //     } catch (error) {
-        //         ErrorHandler.handle(error, res)
-        //     }
-        // },
+    
         get_list: async function (req, res) {
             try {
                 const params = paramHelper(req)

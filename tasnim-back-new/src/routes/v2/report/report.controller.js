@@ -10,7 +10,7 @@ module.exports = {
         todayorder: async function (req, res) {
             try {
                 let now = new Date(Date.now())
-                // if after 6 am & if befor 6 am
+
                 let namovaffagh = await findOrderByToday(now, { state: 'پرداخت ناموفق' })
                 let movaffagh = await findOrderByToday(now, { state: 'ثبت سفارش موفق' })
                 let readyServe = await findOrderByToday(now, { state: 'آماده شده جهت تحویل' })

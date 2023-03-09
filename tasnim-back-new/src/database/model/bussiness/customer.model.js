@@ -11,14 +11,6 @@ const addressSchema = new mongoose.Schema({
     type: String,
     required: false
   },
-  latitude: {
-    type: String,
-    required: false
-  },
-  longitude: {
-    type: String,
-    required: false
-  },
   createdAt: {
     type: Date,
     required: true,
@@ -65,10 +57,7 @@ const Schema = new mongoose.Schema({
     type: String,
     required: false
   },
-  present_code: {
-    type: String,
-    required: false
-  },
+
   sign_up_time: {
     type: Date,
     default: Date.now,
@@ -82,14 +71,7 @@ const Schema = new mongoose.Schema({
     select: false,
 
   },
-  verif_code: {
-    type: String,
-    required: false,
-  },
-  verified: {
-    type: Boolean,
-    required: false,
-  },
+
   phone: {
     type: String,
     unique: true,
@@ -99,16 +81,20 @@ const Schema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  birthday: {
-    type: String,
-    required: false,
-  },
   nation_id: {
     type: String,
     required: false,
   },
   city: {
     type: String,
+    required: false,
+  },
+  verif_code: {
+    type: String,
+    required: false,
+  },
+  verified: {
+    type: Boolean,
     required: false,
   },
   createdAt: {

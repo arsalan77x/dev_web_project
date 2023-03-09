@@ -10,10 +10,6 @@ const schema = require('./schema');
 module.exports = router.use(
     validator(schema.apiKey, ValidationSource.HEADER),
     async (req, res, next) => {
-        // req.apiKey = req.headers['x-api-key'].toString();
-        // console.log(req.apiKey)
-        // const apiKey = await ApiKeyRepo.findByKey(req.apiKey);
-        // // Logger.info(apiKey);
-        // if (!apiKey) next(new ForbiddenError('PermissionDenied'));
+
         return next();
     })

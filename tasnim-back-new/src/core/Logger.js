@@ -8,9 +8,8 @@ const { environment, logDirectory } =  require('../../config');
 let dir = logDirectory;
 if (!dir) dir = path.resolve('logs');
 
-// create directory if it is not present
+
 if (!fs.existsSync(dir)) {
-  // Create the directory if it does not exist
   fs.mkdirSync(dir);
 }
 
@@ -41,5 +40,5 @@ module.exports =  createLogger({
     }),
   ],
   exceptionHandlers: [new DailyRotateFile(options.file)],
-  exitOnError: false, // do not exit on handled exceptions
+  exitOnError: false, 
 });

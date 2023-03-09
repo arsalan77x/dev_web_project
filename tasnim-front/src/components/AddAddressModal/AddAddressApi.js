@@ -23,9 +23,8 @@ export const AddAddress = async (
     const customerid = store?.getState()?.user?.id;
     let addressInfo = {
       title: title,
-      detail: address,
-      longitude: position.lng.toString(),
-      latitude: position.lat.toString(),
+      detail: address
+
     };
     let addressBody = { address: addresses };
     addressBody.address.push(addressInfo);

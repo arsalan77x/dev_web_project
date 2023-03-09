@@ -1,7 +1,7 @@
 const {SuccessResponse, AuthFailureResponse} = require('../../../core/ApiResponse')
 const {BadRequestError, ForbiddenError, ErrorHandler} = require('../../../core/ErrorHandler')
 const mongoose = require('mongoose')
-const paramHelper = require('../../../helper/queryParam.helper')
+
 const configModel = require('../../../database/model/bussiness/config.model')
 
 module.exports = {

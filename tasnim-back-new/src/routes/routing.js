@@ -2,7 +2,6 @@ module.exports = function handleAllRoutes(app) {
     const slider = require('./v2/slider/slider.routes')
     const config = require('./v2/config/config.routes')
 
-    const parent = require('./v2/parent/parent.routes')
     const category = require('./v2/category/category.routes')
     const product = require('./v2/product/product.routes')
     const customer = require('./v2/customer/customer.routes')
@@ -20,8 +19,8 @@ module.exports = function handleAllRoutes(app) {
 
     app.use('/api/v2/slider', apiKeyMiddleware, slider)
     app.use('/api/v2/config', apiKeyMiddleware, config)
-
-    app.use('/api/v2/parent', apiKeyMiddleware, parent)
+ 
+   
     app.use('/api/v2/category', apiKeyMiddleware, category)
     app.use('/api/v2/product', apiKeyMiddleware, product)
     app.use('/api/v2/customer', apiKeyMiddleware, customer)

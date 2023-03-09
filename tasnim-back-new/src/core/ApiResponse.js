@@ -16,7 +16,7 @@ const ResponseStatus = {
     INTERNAL_ERROR: 500,
 }
 
-// manipulate last position of Response
+
 const responseManager = async (response, res) => {
     try {
         const translated = await messageTranslator(response.message, res)

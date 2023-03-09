@@ -1,7 +1,6 @@
 import React, { useEffect } from "react"
 import "./MobileProductsCard.scss"
 import Card from '@material-ui/core/Card';
-import APP_URL from "../../../../Data/APP_URL"
 import MobileProductCardItem from "./MobileProductCardItem/MobileProductCardItem";
 import { Grow } from "@material-ui/core";
 import ImageContainer from "../../ImageContainer/ImageContainer";

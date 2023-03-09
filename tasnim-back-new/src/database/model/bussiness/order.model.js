@@ -34,14 +34,6 @@ const addressSchema = new mongoose.Schema({
   detail: {
     type: String,
     required: false
-  },
-  latitude: {
-    type: String,
-    required: false
-  },
-  longitude: {
-    type: String,
-    required: false
   }
 
 });
@@ -141,7 +133,7 @@ const Schema = new mongoose.Schema({
   send_price: {
     type: Number,
     required: false
-  },
+  }, 
   packprice: {
     type: Number,
     required: false
@@ -150,10 +142,7 @@ const Schema = new mongoose.Schema({
     type: Number,
     required: false
   },
-  pay_authority: {
-    type: String,
-    required: false
-  },
+
   ref_id: {
     type: String,
     required: false

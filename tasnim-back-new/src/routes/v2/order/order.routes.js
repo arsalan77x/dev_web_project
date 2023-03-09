@@ -8,8 +8,8 @@ router.get('/list', role('admin'), authorization, order.get_list)
 router.get('/list/:cid', order.get_customer_order)
 router.get('/one/:id', order.get_one)
 router.patch('/one/:id', role('admin'), authorization, order.update_one)
-router.delete('/one/:id', role('superadmin'), authorization, order.delete_one)
-router.delete('/list', role('superadmin'), authorization, order.delete_list)
+router.delete('/one/:id', role('admin'), authorization, order.delete_one)
+router.delete('/list', role('admin'), authorization, order.delete_list)
 
 router.get('/sendprice/:cid/:aid', order.send_price)
 

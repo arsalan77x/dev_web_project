@@ -71,14 +71,6 @@ const Schema = new mongoose.Schema({
     default: 0,
     required: false
   },
-  off_start_time: {
-    type: String,
-    required: false
-  },
-  off_end_time: {
-    type: String,
-    required: false
-  },
   star: {
     type: Number,
     required: false
@@ -91,10 +83,7 @@ const Schema = new mongoose.Schema({
     type: Boolean,
     required: false
   },
-  materials: {
-    type: String,
-    required: false
-  },
+
   pic_url: {
     type: String,
     required: false

@@ -6,13 +6,7 @@ const { InternalError, BadTokenError, TokenExpiredError } = require('../core/Err
 const Logger = require('../core/Logger');
 const { ConsoleTransportOptions } = require('winston/lib/winston/transports');
 
-/*
- * issuer 		— Software organization who issues the token.
- * subject 		— Intended user of the token.
- * audience 	— Basically identity of the intended recipient of the token.
- * expiresIn	— Expiration time after which the token will be invalid.
- * algorithm 	— Encryption algorithm to be used to protect the token.
- */
+
 
 class JWT {
     static readPublicKey() {
@@ -26,33 +20,29 @@ class JWT {
     static async encode(payload) {
         const cert = await this.readPrivateKey();
         if (!cert) throw new InternalError('TokenGenerationFailure');
-        // @ts-ignore
+   
         return promisify(sign)({ ...payload }, cert, { algorithm: 'RS256' });
     }
 
-    /**
-     * This method checks the token and returns the decoded data when token is valid in all respect
-     */
+
     static async validate(token,req) {
         const cert = await this.readPublicKey();
         try {
-            // @ts-ignore
+  
             return (await promisify(verify)(token, cert));
         } catch (e) {
             // Logger.debug(e);
             if (e && e.name === 'TokenExpiredError') throw new TokenExpiredError('TokenIsExpired');
-            // throws error if the token has not been encrypted by the private key
+            
             throw new BadTokenError();
         }
     }
 
-    /**
-     * Returns the decoded payload if the signature is valid even if it is expired
-     */
+
     static async decode(token,req) {
         const cert = await this.readPublicKey();
         try {
-            // @ts-ignore
+
             return (await promisify(verify)(token, cert, { ignoreExpiration: true }));
         } catch (e) {
             Logger.debug(e);

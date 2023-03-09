@@ -26,7 +26,6 @@ app.use(bodyParser.json({limit: '20mb'}))
 app.use(bodyParser.urlencoded({limit: '20mb', extended: true, parameterLimit: 50000}))
 app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:3002'], optionsSuccessStatus: 200 }));
 
-// handle locale
 app.use(
     createLocaleMiddleware({
         priority: ['accept-language', 'default'],
@@ -36,15 +35,10 @@ app.use(
 app.use(whichLangMiddleware)
 app.use(fileUpload())
 
-// if (process.env.NODE_ENV !== 'test') app.use(apiKeyMiddleware)
-// Routes
 app.use('/api/v2', express.static(__dirname + '../../public'))
-
 handleAllRoutes(app)
 
-/// catch 404 and forward to error handler
 app.use((req, res, next) => next(new NotFoundResponse("URL notfound")))
-// generic error handler
 app.use((err, req, res, next) => {
     if (err instanceof ErrorHandler) {
         console.log(err)

@@ -30,12 +30,9 @@ const authorization = router.use(async (req, res, next) => {
 
 const role = (privilege) => (req, res, next) => {
     const PRIV_CODE = {
-        god: 5,
-        superadmin: 4,
         admin: 3,
-        superuser: 2,
         user: 1,
-        human: 0,
+
     }
     req.currentRoleCode = PRIV_CODE[privilege]
     next()

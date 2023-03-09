@@ -38,21 +38,15 @@ module.exports = {
         },
         create_one: async function (req, res, next) {
             try {
-                // new SuccessResponse('AllSuccess').send(res, "ordernew")
 
                 basketPriceCalc(req)
-                //find customer mobile
+
                 let sendPrice = 0
-                if (req.body.deliver_type == "ارسال" && req.body.address?.latitude && req.body.address?.longitude)
-                    sendPrice = await sendPriceCalc(
-                        req.body.address.latitude,
-                        req.body.address.longitude,
-                    )
+  
                 let finalPriceToPay = +req.priceAfter + +req.packprice + +sendPrice
                 const customer = await Customer.findById(req.body.customer_id)
-                let zarrinResponse = ''
                 let state = 'پرداخت حضوری'
-                let isOfflinePay = true
+
            
 
                 const factorId = await makeid(5)
@@ -74,12 +68,11 @@ module.exports = {
                     final_price_pay: finalPriceToPay,
                     pay_type: req.body.pay_type,
                     price_after_off: req.priceAfter,
-                    pay_authority: zarrinResponse.authority,
                     factor_number: factorId,
                     factor_id: factorId,
                 })
                 const ordernew = await OrderRepo.create_one(order)
-                // new SuccessResponse('AllSuccess').send(res, ordernew)
+      
                 new SuccessResponse().send(res, { message: 'offline' })
 
             } catch (error) {
@@ -89,11 +82,10 @@ module.exports = {
         pay_verification: async function (req, res) {
             try {
                 const authority = req.query.Authority
-                let order = await OrderRepo.get_list({ filter: { pay_authority: authority } })
                 order = order[0]
                 const peyVerificResponse = await paymentVerification(
                     order.price_after_off,
-                    order.pay_authority,
+                  
                 )
 
                 if (peyVerificResponse.status === 100) {

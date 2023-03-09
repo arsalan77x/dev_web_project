@@ -20,7 +20,6 @@ module.exports = router.use(
             const payload = await JWT.validate(req.accessToken, req);
             validateTokenData(payload, req);
 
-            // customer or user
             let user = await UserRepo.findById(new Types.ObjectId(payload.sub));
             if (!user) {
                 user = await CustomerRepo.get_one(new Types.ObjectId(payload.sub));
@@ -36,8 +35,7 @@ module.exports = router.use(
 
             return next();
         } catch (e) {
-            // if (e instanceof TokenExpiredError) return new AccessTokenError(e.message,req);
-            // throw e;
+
             ErrorHandler.handle(e, res);;
         }
     })
